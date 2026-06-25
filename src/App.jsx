@@ -5,8 +5,6 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import Home from './pages/Home'
 
-
-
 function App() {
   return (
     // <div className="min-h-screen bg-black text-white">

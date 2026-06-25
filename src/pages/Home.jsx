@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import FeatureSection from '../components/FeatureSection';
+import TrendingCarousel from '../components/TrendingCarousel';
 
 function Home(){
     return (
@@ -9,6 +10,7 @@ function Home(){
         <div className="min-h-screen bg-black text-white">
         <Navbar />
         <Hero />
+        <TrendingCarousel/>
         <FeatureSection />
         </div>
         <Footer/>

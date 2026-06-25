@@ -1,8 +1,24 @@
 @import "tailwindcss";
 
-body {
+/* body {
     margin:0;
     background-color: black;
     color: white;
   font-family: sans-serif;
+} */
+ @theme {
+  --color-primary: #ef4444;
+  --color-primary-hover: #dc2626;
+
+  --color-bg: #000000;
+  --color-surface: #111111;
+  --color-surface-light: #1a1a1a;
+
+  --color-text: #ffffff;
+  --color-text-secondary: #9ca3af;
+
+  --radius-card: 18px;
+  --radius-button: 14px;
+
+  --shadow-card: 0 10px 30px rgba(0,0,0,0.35);
 }
