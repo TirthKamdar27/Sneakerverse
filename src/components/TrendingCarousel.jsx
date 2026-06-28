@@ -18,6 +18,7 @@ function TrendingCarousel() {
                             name = {shoe.name}
                             brand = {shoe.brand}
                             price = {shoe.price}
+                            rating = {shoe.rating}
                             />
                         </div>
                     ))}

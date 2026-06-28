@@ -1,15 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
-import Home from './pages/Home'
+import {Routes, Route} from 'react-router-dom';
+import Home from './pages/Home';
+import ProductDetails from './pages/ProductDetails';
+import Cart from './pages/Cart';
+import Wishlist from './pages/Wishlist'
 
 function App() {
   return (
-    // <div className="min-h-screen bg-black text-white">
-    <Home/>
-    // </div>
+   <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/products/:id" element={<ProductDetails />} />
+    <Route path="/cart" element={<Cart />} />
+    <Route path="/wishlist" element={<Wishlist />} />
+  </Routes>
   );
 }
 

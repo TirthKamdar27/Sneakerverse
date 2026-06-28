@@ -15,10 +15,13 @@ function FeaturedSection(){
 
                     <ProductCard
                     key={sneaker.id}
+                    id={sneaker.id}
                     image={sneaker.image}
                     name={sneaker.name}
                     brand={sneaker.brand}
                     price={sneaker.price}
+                    rating = {sneaker.rating}
+                    reviews = {sneaker.reviews}
                     />
                 )
             )}

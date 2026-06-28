@@ -2,7 +2,11 @@ import { FaHeart } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
-function ProductCard ({image, name, brand, price}) {
+import {Link} from 'react-router-dom'
+import ProductDetails from "../pages/ProductDetails"
+
+function ProductCard ({id, image, name, brand, price, rating, reviews}) {
+    const stars = [1, 2, 3, 4, 5]
     return (
 <motion.div
     whileHover={{
@@ -34,20 +38,23 @@ function ProductCard ({image, name, brand, price}) {
                     {name}
                 </h3>
                 <div className="flex items-center mt-2 gap-2">
-                <FaStar className="text-yellow-300 text-lg "/>
-                <FaStar className="text-yellow-300 text-lg"/>
-                <FaStar className="text-yellow-300 text-lg"/>
-                <FaStar className="text-yellow-300 text-lg"/>
-                <FaStar className="text-yellow-300 text-lg"/>
-                <p className="text-white flex text-md">4.9</p>
+                {stars.map((star) => {
+                    return (
+                        <FaStar className="text-yellow-300 text-lg"/>
+                        )
+                })}
+                <p className="text-white flex text-md">{rating}</p>
                 </div>
                 <p className="text-white flex font-bold mt-2 text-lg">
                     ₹{price}    
                 </p>
-                <motion.div
-                whileHover={{x:8}} className="flex gap-1 py-1 mt-1">
-                <button className="flex items-center cursor-pointer gap-2 font-semibold text-red-500">View More</button>
-                <FaArrowRight className="text-red-500 cursor-pointer text-md mt-1.5"/>
+                <motion.div whileHover={{ x: 4 }} className="mt-2">
+                    <Link
+                        to={`/products/${id}`}
+                        className="flex items-center gap-2 font-semibold text-red-500"
+                    >View Details
+                    <FaArrowRight />
+                    </Link> 
                 </motion.div>
                 
         </motion.div>
