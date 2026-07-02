@@ -4,8 +4,10 @@ import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 import {Link} from 'react-router-dom'
 import ProductDetails from "../pages/ProductDetails"
+import { useState } from "react";
 
 function ProductCard ({id, image, name, brand, price, rating, reviews}) {
+    const [color, setColor] = useState(false);
     const stars = [1, 2, 3, 4, 5]
     return (
 <motion.div
@@ -23,10 +25,10 @@ function ProductCard ({id, image, name, brand, price, rating, reviews}) {
             src={image}
             alt={name}
             className="w-full h-55 flex rounded-lg"/>
-            <motion.button
-                whileHover={{scale:1.2}}
-                whileTap={{scale:0.9}} className="text-red-500 text-xl rounded-lg cursor-pointer absolute top-4 left-5">
-                <FaHeart className="text-white hover:text-red-500"/>
+            <motion.button whileHover={{scale:1.2}} 
+            whileTap={{scale:0.9}} 
+            className="text-red-500 text-xl rounded-lg cursor-pointer absolute top-4 left-5"> 
+            <FaHeart className="text-white hover:text-red-500"/> 
             </motion.button>
                 <span className="absolute top-4 right-4 bg-red-400 text-black text-xs font-bold px-2 py-1 rounded-lg">
                 Trending

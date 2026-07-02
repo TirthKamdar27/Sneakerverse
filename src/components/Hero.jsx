@@ -84,6 +84,7 @@ function Hero() {
             hover:bg-red-500
             transition-0.1s
             font-semibold
+            cursor-pointer
             "
           >
             Shop Now
