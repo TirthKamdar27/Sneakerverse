@@ -3,14 +3,12 @@ import { FaStar } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 import {Link} from 'react-router-dom'
-import ProductDetails from "../pages/ProductDetails"
 import { useState } from "react";
 
 function ProductCard ({id, image, name, brand, price, rating, reviews}) {
-    const [color, setColor] = useState(false);
     const stars = [1, 2, 3, 4, 5]
     return (
-<motion.div
+<motion.div 
     whileHover={{
         y: -8,
         transition: {
@@ -39,10 +37,10 @@ function ProductCard ({id, image, name, brand, price, rating, reviews}) {
                 <h3 className="font-semibold flex text-white text-lg mt-2">
                     {name}
                 </h3>
-                <div className="flex items-center mt-2 gap-2">
+                <div className="flex items-center mt-2 gap-2" >
                 {stars.map((star) => {
                     return (
-                        <FaStar className="text-yellow-300 text-lg"/>
+                        <FaStar key={star} className="text-yellow-300 text-lg"/>
                         )
                 })}
                 <p className="text-white flex text-md">{rating}</p>

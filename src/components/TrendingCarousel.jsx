@@ -6,7 +6,7 @@ import ProductCard from "./ProductCard";
 function TrendingCarousel() {
     return (
         <section className="overflow-hidden">
-            <h2 className="text-4xl font-bold text-center mb-10">
+            <h2 className="text-4xl font-bold text-center -mt-2 mb-10">
                 Trending Today
             </h2>
             <div>
@@ -14,6 +14,7 @@ function TrendingCarousel() {
                     {carouselSneakers.map((shoe, index) => (
                         <div key={`${shoe.id}-${index}`} className="w-[280px] flex-shrink-0">
                             <ProductCard
+                            id={shoe.id}
                             image = {shoe.image}
                             name = {shoe.name}
                             brand = {shoe.brand}

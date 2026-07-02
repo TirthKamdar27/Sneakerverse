@@ -6,9 +6,13 @@ import { FaOpencart } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { CiLogin } from "react-icons/ci";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { FaTimes } from "react-icons/fa";
 
-function Navbar({searchItem, setSearchItem}) {
-    const MotionLink = motion(Link);
+function Navbar({ searchItem, setSearchItem }) {
+  const [searchBar, setSearchBar] = useState(false);
+  const MotionLink = motion(Link);
   const { cartItems } = useContext(CartContext);
   const navAnimation = {
     whileHover: { scale: 1.2, color: "#ef4444" },
@@ -20,9 +24,16 @@ function Navbar({searchItem, setSearchItem}) {
   );
   return (
     <nav className="sticky top-0 z-50 flex justify-between items-center px-8 py-5 border-b border-gray-800 bg-black ">
-      <MotionLink to="/" className="text-2xl font-bold" {...navAnimation}>
-            SneakerVerse
-    </MotionLink>
+      <motion.button
+        onClick={() => {
+          setSearchItem("");
+          setSearchBar(false);
+        }}
+        {...navAnimation}
+        className="text-2xl font-bold cursor-pointer"
+      >
+        <Link to={"/"}>SneakerVerse</Link>
+      </motion.button>
       <div className="flex gap-6">
         <MotionLink to="/men" {...navAnimation}>
           Men
@@ -30,14 +41,17 @@ function Navbar({searchItem, setSearchItem}) {
         <MotionLink to="/women" {...navAnimation}>
           Women
         </MotionLink>
-        <MotionLink to="/brand/nike" {...navAnimation}>
+        <MotionLink to="/brand/Nike" {...navAnimation}>
           Nike
         </MotionLink>
-        <MotionLink to="/brand/adidas" {...navAnimation}>
+        <MotionLink to="/brand/Adidas" {...navAnimation}>
           Adidas
         </MotionLink>
-        <MotionLink to="/brand/jordan" {...navAnimation}>
+        <MotionLink to="/brand/Jordan" {...navAnimation}>
           Jordan
+        </MotionLink>
+        <MotionLink to="/brand/Yeezy" {...navAnimation}>
+          Yeezy
         </MotionLink>
         <MotionLink to="/newarrivals" {...navAnimation}>
           New Arrivals
@@ -47,18 +61,66 @@ function Navbar({searchItem, setSearchItem}) {
         <motion.button
           whileHover={{ scale: 1.2, color: "#1788eb" }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => setSearchBar(true)}
           className="cursor-pointer"
         >
           <FaSearch />
         </motion.button>
-        <input value={searchItem} onChange={(e) => setSearchItem(e.target.value)} className="absolute items-center right-45 bg-white text-black px-2 py-1 rounded-lg shadow-md shadow-red-500"/>
+        <AnimatePresence mode="wait">
+          {searchBar && (
+            <>
+              <motion.input
+                initial={{
+                  opacity: 0,
+                  width: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                  width: 220,
+                }}
+                exit={{
+                  opacity: 0,
+                  width: 0,
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeInOut",
+                }}
+                autoFocus
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") {
+                    setSearchBar(false);
+                    setSearchItem("");
+                  }
+                }}
+                value={searchItem}
+                onChange={(e) => setSearchItem(e.target.value)}
+                placeHolder="Search sneakers"
+                className="absolute items-center overflow-hidden right-45 text-white px-2 py-1 rounded-lg bg-gray-800 border border-gray-700 shadow-[0_0_10px_rgba(239,68,68,0.8)]"
+              />
+              <motion.button
+                className="cursor-pointer"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => {
+                  setSearchBar(false);
+                  setSearchItem("");
+                }}
+              >
+                <FaTimes />
+              </motion.button>
+            </>
+          )}
+        </AnimatePresence>
         <motion.button
           whileHover={{ scale: 1.2, color: "#ef4444" }}
           whileTap={{ scale: 0.95 }}
           className="cursor-pointer"
         >
           <Link to="/wishlist" className="relative text-2xl cursor-pointer">
-          <FaHeart />
+            <FaHeart />
           </Link>
         </motion.button>
         <motion.button

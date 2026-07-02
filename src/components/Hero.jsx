@@ -4,7 +4,7 @@ import heroShoe from "../assets/images/hero_shoe_6.webp";
 
 function Hero() {
   return (
-    <section className="relative min-h-[115vh] overflow-hidden flex items-center">
+    <section className="relative min-h-[115vh] -mt-20 overflow-hidden flex items-center">
 
       {/* Background Glow */}
       {/* Large Glow */}
@@ -78,7 +78,6 @@ function Hero() {
             className="
             mt-10
             px-8
-            py-4
             rounded-xl
             bg-red-600
             hover:bg-red-500
